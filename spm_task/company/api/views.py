@@ -21,7 +21,7 @@ class CompanyView(viewsets.GenericViewSet,
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         if not queryset:
-            return Response({'message': 'No companies found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': 'No companies found'}, status=status.HTTP_400_BAD_REQUEST)
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = self.get_serializer(page, many=True)

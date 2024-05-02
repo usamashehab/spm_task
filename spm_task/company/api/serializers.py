@@ -3,6 +3,7 @@ from ..models import Company, SmallBusiness, Startup, Corporate
 from .utils import valid_field_existing
 from spm_task.core.api.serializers import ApprovalSerializer
 from collections import OrderedDict
+from spm_task.utils import format_object_data
 
 
 class SmallBusinessSerializer(serializers.ModelSerializer):
@@ -60,7 +61,7 @@ class CompanySerializer(serializers.ModelSerializer):
         for field in ['small_business', 'startup', 'corporate']:
             if data[field] is None:
                 data.pop(field)
-        return data
+        return format_object_data(data)
 
 
 class CompanyField(serializers.PrimaryKeyRelatedField):
