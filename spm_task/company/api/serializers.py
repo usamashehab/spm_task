@@ -1,7 +1,8 @@
-from rest_framework import serializers
+from rest_framework import serializers, exceptions
 from ..models import Company, SmallBusiness, Startup, Corporate
 from .utils import valid_field_existing
 from spm_task.core.api.serializers import ApprovalSerializer
+from collections import OrderedDict
 
 
 class SmallBusinessSerializer(serializers.ModelSerializer):
@@ -60,3 +61,34 @@ class CompanySerializer(serializers.ModelSerializer):
             if data[field] is None:
                 data.pop(field)
         return data
+
+
+class CompanyField(serializers.PrimaryKeyRelatedField):
+    def get_queryset(self):
+        return Company.objects.all()
+
+    def to_internal_value(self, data):
+        try:
+            return super().to_internal_value(data)
+        except exceptions.ValidationError:
+            raise exceptions.ValidationError(
+                "Company with this ID does not exist")
+
+    def to_representation(self, value):
+        pk = super().to_representation(value)
+        try:
+            company = Company.objects.get(pk=pk)
+            data = {
+                'id': company.id,
+                'name': company.name,
+                'type': company.type,
+            }
+            return data
+        except Company.DoesNotExist:
+            return None
+
+    def get_choices(self, cutoff=None):
+        queryset = self.get_queryset()
+        if queryset is None:
+            return {}
+        return OrderedDict([(item.id, str(item)) for item in queryset])
