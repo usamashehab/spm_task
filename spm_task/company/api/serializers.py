@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from ..models import Company, SmallBusiness, Startup, Corporate
 from .utils import valid_field_existing
+from spm_task.core.api.serializers import ApprovalSerializer
 
 
 class SmallBusinessSerializer(serializers.ModelSerializer):
@@ -25,10 +26,11 @@ class CompanySerializer(serializers.ModelSerializer):
     small_business = SmallBusinessSerializer(required=False)
     startup = StartupSerializer(required=False)
     corporate = CoroprateSerializer(required=False)
+    approval = ApprovalSerializer(read_only=True)
 
     class Meta:
         model = Company
-        fields = ['id', 'type', 'name',
+        fields = ['id', 'type', 'name', 'approval',
                   'small_business', 'startup', 'corporate']
 
     def create(self, validated_data):
