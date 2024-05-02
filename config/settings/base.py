@@ -85,6 +85,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "spm_task.users",
+    "spm_task.core",
+    "spm_task.company"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
