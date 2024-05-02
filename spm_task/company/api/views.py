@@ -15,7 +15,7 @@ class CompanyView(viewsets.GenericViewSet,
 
     def get_queryset(self):
         queryset = super().get_queryset().select_related(
-            'small_business', 'startup', 'corporate')
+            'small_business', 'startup', 'corporate', 'approval')
         return queryset
 
     def list(self, request, *args, **kwargs):

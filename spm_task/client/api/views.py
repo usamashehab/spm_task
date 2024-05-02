@@ -14,7 +14,7 @@ class ClientView(viewsets.GenericViewSet,
     queryset = Client.objects.all()
 
     def get_queryset(self):
-        queryset = super().get_queryset().select_related('company')
+        queryset = super().get_queryset().select_related('approval', 'company')
         return queryset
 
     def list(self, request, *args, **kwargs):
