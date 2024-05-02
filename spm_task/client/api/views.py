@@ -1,7 +1,7 @@
 from rest_framework import viewsets, mixins, status
 from rest_framework.permissions import IsAuthenticated
 from ..models import Client
-from .serializers import ClientSerializer, CreateClientSerializer
+from .serializers import ClientSerializer
 from rest_framework.response import Response
 from spm_task.utils import query_debugger
 
@@ -13,11 +13,6 @@ class ClientView(viewsets.GenericViewSet,
     permission_classes = [IsAuthenticated]
     serializer_class = ClientSerializer
     queryset = Client.objects.all()
-
-    def get_serializer_class(self):
-        if self.action == "Create":
-            self.serializer_class = CreateClientSerializer
-        return super().get_serializer_class()
 
     def get_queryset(self):
         queryset = super().get_queryset().select_related('approval', 'company')
