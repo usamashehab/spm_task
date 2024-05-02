@@ -9,7 +9,6 @@ class Approval(models.Model):
 
     status = models.CharField(
         max_length=10, choices=Status.choices, default=Status.PENDING)
-    approver = models.ForeignKey("users.User", on_delete=models.CASCADE)
 
 
 class BaseModel(models.Model):
@@ -20,3 +19,9 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            approval = Approval.objects.create()
+            self.approval = approval
+        super().save(*args, **kwargs)
