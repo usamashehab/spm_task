@@ -36,5 +36,5 @@ docker-compose -f local.yml run django python manage.py createsuperuser
 ```
 
 
-٦. Open a web browser and navigate to `http://localhost:8000/api/docs/` to access the comprehensive API documentation.or
+6. Open a web browser and navigate to `http://localhost:8000/api/docs/` to access the comprehensive API documentation.or
    navigate to `http://localhost:8000/` see the home page.
