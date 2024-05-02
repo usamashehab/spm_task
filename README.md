@@ -1,7 +1,7 @@
 # SPM Task
 
 
-Click [here]([https://www.youtube.com/watch?v=0-GT9c9_h8Y](https://lucid.app/lucidchart/f655101e-45a8-4686-9cb0-dfc2295d0c84/edit?viewport_loc=272%2C-638%2C1541%2C1352%2C0_0&invitationId=inv_8cebdaba-842d-4172-b9e4-eebab81f4c58)) to view a database schema.
+Click [here](https://lucid.app/lucidchart/f655101e-45a8-4686-9cb0-dfc2295d0c84/edit?viewport_loc=272%2C-638%2C1541%2C1352%2C0_0&invitationId=inv_8cebdaba-842d-4172-b9e4-eebab81f4c58) to view a database schema.
 
 ## installation steps:
 
