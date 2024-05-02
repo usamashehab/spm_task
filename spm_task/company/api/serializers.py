@@ -64,6 +64,12 @@ class CompanySerializer(serializers.ModelSerializer):
         return format_object_data(data)
 
 
+class BasicCompanyDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = ['id', 'name', 'type']
+
+
 class CompanyField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
         return Company.objects.all()
@@ -79,11 +85,7 @@ class CompanyField(serializers.PrimaryKeyRelatedField):
         pk = super().to_representation(value)
         try:
             company = Company.objects.get(pk=pk)
-            data = {
-                'id': company.id,
-                'name': company.name,
-                'type': company.type,
-            }
+            data = BasicCompanyDataSerializer(company).data
             return data
         except Company.DoesNotExist:
             return None
