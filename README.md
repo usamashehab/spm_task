@@ -1,7 +1,7 @@
 # SPM Task
 
 
-
+Click [here](https://lucid.app/lucidchart/f655101e-45a8-4686-9cb0-dfc2295d0c84/edit?viewport_loc=272%2C-638%2C1541%2C1352%2C0_0&invitationId=inv_8cebdaba-842d-4172-b9e4-eebab81f4c58) to view a database schema.
 
 ## installation steps:
 
@@ -36,5 +36,5 @@ docker-compose -f local.yml run django python manage.py createsuperuser
 ```
 
 
-٦. Open a web browser and navigate to `http://localhost:8000/api/docs/` to access the comprehensive API documentation.or
+6. Open a web browser and navigate to `http://localhost:8000/api/docs/` to access the comprehensive API documentation.or
    navigate to `http://localhost:8000/` see the home page.
